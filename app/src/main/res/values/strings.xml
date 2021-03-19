@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="temp">Temp:</string>
+    <string name="clear">Clear</string>
+    <string name="_72">72</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="city_name">city name</string>
+    <string name="look_up">Look Up</string>
+    <string name="_73">73</string>
+    <string name="_69">69</string>
+    <string name="feels_like">Feels Like:  </string>
+</resources>

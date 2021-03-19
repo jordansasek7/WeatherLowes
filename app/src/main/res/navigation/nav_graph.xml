@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.weatherlowes.view.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_temperature2"
+            app:destination="@id/temperature" />
+    </fragment>
+    <fragment
+        android:id="@+id/temperature"
+        android:name="com.example.weatherlowes.view.Temperature"
+        android:label="Temperature" >
+        <action
+            android:id="@+id/action_temperature_to_detailsFragment2"
+            app:destination="@id/detailsFragment" />
+        <argument
+            android:name="toDetails"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.weatherlowes.view.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="details"
+            app:argType="com.example.weatherlowes.model.AllData" />
+    </fragment>
+
+</navigation>
