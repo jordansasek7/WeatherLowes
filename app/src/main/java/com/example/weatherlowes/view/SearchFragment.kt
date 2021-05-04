@@ -1,42 +1,26 @@
 package com.example.weatherlowes.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.weatherlowes.R
 import com.example.weatherlowes.databinding.FragmentSearchBinding
-import com.example.weatherlowes.viewmodel.MainViewModel
 
 
-class SearchFragment : Fragment() {
-
-    private lateinit var binding: FragmentSearchBinding
-    private val viewModel by viewModels<MainViewModel>()
-//    private val args: SearchFragmentArgs by navArgs()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ) = FragmentSearchBinding.inflate(inflater, container, false).also { binding = it }.root
+class SearchFragment : Fragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnLookUp.setOnClickListener {
-            if(binding.etCityName.text?.isEmpty() == true){
-            }
-            else {
-                val action =
-                    SearchFragmentDirections.actionSearchFragmentToTemperature2(binding.etCityName.text.toString())
-                binding.root.findNavController().navigate(action)
+        FragmentSearchBinding.bind(view).apply {
+            etCityName.doAfterTextChanged { btnLookUp.isEnabled = it.isNullOrBlank() == false }
+            btnLookUp.setOnClickListener {
+                etCityName.text?.toString()?.let {
+                    if (it.isNotBlank()) findNavController().navigate(
+                        SearchFragmentDirections.actionSearchFragmentToTemperature2(it)
+                    )
+                }
             }
         }
     }

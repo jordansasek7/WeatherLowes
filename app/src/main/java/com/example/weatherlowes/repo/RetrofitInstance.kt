@@ -1,5 +1,6 @@
 package com.example.weatherapp.repo.remote
 
+import com.example.weatherlowes.repo.WeatherService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

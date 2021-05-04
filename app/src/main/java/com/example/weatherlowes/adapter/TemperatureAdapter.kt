@@ -12,12 +12,17 @@ import com.example.weatherlowes.view.TemperatureDirections
 //UI to make the data bound. In this case there needs to be an action to take the user from the recycler view
 //to the next page to get the details
 
-class TemperatureAdapter(val weather: List<AllData>) :
-    RecyclerView.Adapter<TemperatureAdapter.TemperatureViewHolder>() {
+class TemperatureAdapter(
+    private val weather: List<AllData>,
+    private val weatherOnClick: (AllData) -> Unit
+) : RecyclerView.Adapter<TemperatureAdapter.TemperatureViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemperatureViewHolder {
         val binding: WeatherItemBinding =
             WeatherItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TemperatureViewHolder(binding)
+        return TemperatureViewHolder(binding).apply {
+            itemView.setOnClickListener { weatherOnClick.invoke(weather[adapterPosition]) }
+        }
     }
 
     override fun onBindViewHolder(holder: TemperatureViewHolder, position: Int) {
@@ -30,18 +35,13 @@ class TemperatureAdapter(val weather: List<AllData>) :
         return weather.size
     }
 
-    class TemperatureViewHolder(val binding: WeatherItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        //set up the adapter view holder to hold the data needed
-        //In this case the OnClickListener takes the user from the list to the next fragment for
-        // the Details
+    class TemperatureViewHolder(
+        private val binding: WeatherItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         fun setTemperature(allData: AllData) {
             binding.tvTemp.text = "${allData.main.temp.toInt()}"
-            binding.tvTypeWeather.text = "${allData.weather[0].main}"
-            binding.root.setOnClickListener() {
-                val action = TemperatureDirections.actionTemperatureToDetailsFragment2(allData)
-                Navigation.findNavController(binding.root).navigate(action)
-            }
+            binding.tvTypeWeather.text = allData.weather.firstOrNull()?.main ?: ""
         }
     }
 }

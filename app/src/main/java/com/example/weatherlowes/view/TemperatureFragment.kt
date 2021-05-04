@@ -1,48 +1,41 @@
 package com.example.weatherlowes.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.weatherlowes.R
 import com.example.weatherlowes.adapter.TemperatureAdapter
 import com.example.weatherlowes.databinding.FragmentTemperatureBinding
-import com.example.weatherlowes.viewmodel.MainViewModel
+import com.example.weatherlowes.model.AllData
+import com.example.weatherlowes.viewmodel.WeatherViewModel
 
 
-class Temperature : Fragment() {
+class Temperature : Fragment(R.layout.fragment_temperature) {
 
     private lateinit var binding: FragmentTemperatureBinding
-    private val viewModel by viewModels<MainViewModel>()
-    val args: TemperatureArgs by navArgs()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ) = FragmentTemperatureBinding.inflate(inflater, container, false).also { binding = it }.root
+    private val viewModel by viewModels<WeatherViewModel>()
+    private val args: TemperatureArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+        viewModel.city = args.toDetails
+        binding = FragmentTemperatureBinding.bind(view).apply {
+            toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         }
-//set up the adapter
-        viewModel.weather.observe(this.viewLifecycleOwner, androidx.lifecycle.Observer {
-            binding.rvTemperatureItem.layoutManager = LinearLayoutManager(this.context)
-            binding.rvTemperatureItem.adapter =
-                it.list?.let { list -> TemperatureAdapter(list) }
-        })
-        viewModel.getWeather(args.toDetails)
+
+        viewModel.weather.observe(viewLifecycleOwner) { weatherData ->
+            weatherData?.list?.let {
+                binding.rvTemperatureItem.adapter = TemperatureAdapter(it, ::weatherOnClick)
+            } ?: Toast.makeText(context, "Could not retrieve data", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun weatherOnClick(allData: AllData) {
+        val action = TemperatureDirections.actionTemperatureToDetailsFragment2(allData)
+        findNavController().navigate(action)
     }
 }

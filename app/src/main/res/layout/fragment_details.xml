@@ -64,13 +64,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_act_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/temperature"
         android:text="@string/_69"
         android:textSize="68sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +79,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_feels_like"
+        style="@style/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/feels_like"
@@ -90,6 +91,7 @@
         android:id="@+id/tv_feels_like_temp_numb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/temperature"
         android:text="@string/_69"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/tv_feels_like"
@@ -99,6 +101,8 @@
         android:id="@+id/tv_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/temperature"
+        android:textColor="@color/black_800"
         android:text="Clouds"
         android:textSize="38sp"
         app:layout_constraintStart_toStartOf="@id/guideline7"
@@ -108,6 +112,7 @@
         android:id="@+id/tv_details_further"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/temperature"
         android:text="Scattered Clouds"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="@id/tv_details"
