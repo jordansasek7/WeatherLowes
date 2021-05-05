@@ -2,7 +2,6 @@ package com.example.weatherlowes.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -32,7 +31,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             val simpleDateFormat = SimpleDateFormat("M/d/yyyy h:mma", Locale.getDefault()).apply {
                 timeZone = TimeZone.getTimeZone("UTC")
             }
-            tvTime.text = simpleDateFormat.format(Date(args.details.dt*1000))
+            tvTime.text = simpleDateFormat.format(Date(args.details.dt * 1000))
 
             toolbarDetails.setNavigationOnClickListener {
                 findNavController().navigateUp()
