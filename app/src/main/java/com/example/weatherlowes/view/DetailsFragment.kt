@@ -23,18 +23,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             val cityName = args.cityName
             toolbarDetails.title = cityName
             val iconPath = args.details.weather[0].icon + ".png"
-            tvActTemp.text = args.details.main.temp.toInt().toString()
-            tvFeelsLikeTempNumb.text = args.details.main.feelsLike.toInt().toString()
+            tvActTemp.text = args.details.main.temp.toInt().toString() + "º"
+            tvFeelsLikeTempNumb.text = args.details.main.feelsLike.toInt().toString() + "º"
             tvDetailsFurther.text = args.details.weather[0].description
             tvDetails.text = args.details.weather[0].main
             ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
-
 
             val simpleDateFormat = SimpleDateFormat("M/d/yyyy h:mma", Locale.getDefault()).apply {
                 timeZone = TimeZone.getTimeZone("UTC")
             }
             tvTime.text = simpleDateFormat.format(Date(args.details.dt*1000))
-
 
             toolbarDetails.setNavigationOnClickListener {
                 findNavController().navigateUp()

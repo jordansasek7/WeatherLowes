@@ -38,9 +38,10 @@ class TemperatureAdapter(
 
         fun setTemperature(weatherResponse: WeatherResponse) {
             val iconPath = weatherResponse.weather[0].icon + ".png"
-            binding.tvTemp.text = "${weatherResponse.main.temp.toInt()}"
+            binding.tvTemp.text = "${weatherResponse.main.temp.toInt()}º"
             binding.tvTypeWeather.text = weatherResponse.weather.firstOrNull()?.main ?: ""
             binding.ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
+
 
             val simpleDateFormat = SimpleDateFormat("M/d ha", Locale.getDefault()).apply {
                 timeZone = TimeZone.getTimeZone("UTC")
