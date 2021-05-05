@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".60" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivWeatherImage"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
         android:text="@string/clear"
-        android:textAppearance="?textAppearanceHeadline4"
+        android:textAppearance="?textAppearanceHeadline5"
         app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,17 +46,21 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
         android:text="@string/temp"
-        android:textAppearance="?textAppearanceHeadline4"
+        android:textAppearance="?textAppearanceHeadline5"
         app:layout_constraintStart_toEndOf="@id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <View-->
-    <!--        android:id="@+id/line_separator"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="1dp"-->
-    <!--        android:layout_marginVertical="5dp"-->
-    <!--        android:background="@android:color/darker_gray"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/tv_temp" />-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_time"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4PM"
+        app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_temp"
+        app:layout_constraintTop_toTopOf="@id/tv_temp" />
+
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"

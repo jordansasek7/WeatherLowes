@@ -9,6 +9,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.weatherlowes.R
 import com.example.weatherlowes.databinding.FragmentDetailsBinding
 import com.example.weatherlowes.loadImage
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -26,7 +28,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             tvDetailsFurther.text = args.details.weather[0].description
             tvDetails.text = args.details.weather[0].main
             ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
-            toolbarDetails.setNavigationOnClickListener { findNavController().navigateUp()
+
+
+            val simpleDateFormat = SimpleDateFormat("M/d/yyyy h:mma", Locale.getDefault()).apply {
+                timeZone = TimeZone.getTimeZone("UTC")
+            }
+            tvTime.text = simpleDateFormat.format(Date(args.details.dt*1000))
+
+
+            toolbarDetails.setNavigationOnClickListener {
+                findNavController().navigateUp()
             }
 
         }

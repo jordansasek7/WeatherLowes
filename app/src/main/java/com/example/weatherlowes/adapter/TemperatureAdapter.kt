@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherlowes.databinding.WeatherItemBinding
 import com.example.weatherlowes.loadImage
 import com.example.weatherlowes.model.WeatherResponse
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class TemperatureAdapter(
     private val weatherOnClick: (WeatherResponse) -> Unit
@@ -38,13 +41,22 @@ class TemperatureAdapter(
             binding.tvTemp.text = "${weatherResponse.main.temp.toInt()}"
             binding.tvTypeWeather.text = weatherResponse.weather.firstOrNull()?.main ?: ""
             binding.ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
+
+            val simpleDateFormat = SimpleDateFormat("M/d ha", Locale.getDefault()).apply {
+                timeZone = TimeZone.getTimeZone("UTC")
+            }
+            binding.tvTime.text = simpleDateFormat.format(Date(weatherResponse.dt * 1000))
         }
+
+
     }
 
-    fun updateWeatherList(weatherList: List<WeatherResponse>) {
-        this.weatherList = weatherList
-        this.notifyDataSetChanged()
-    }
+
+fun updateWeatherList(weatherList: List<WeatherResponse>) {
+    this.weatherList = weatherList
+    this.notifyDataSetChanged()
+
+}
 }
 
 

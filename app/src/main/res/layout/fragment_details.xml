@@ -110,6 +110,16 @@
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_details"
+        app:layout_constraintStart_toStartOf="@id/tv_details"
+        app:layout_constraintBottom_toTopOf="@id/tv_details_further"
+        android:text="@string/_4pm"
+        style="@style/TextAppearance.MaterialComponents.Headline4"/>
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_details_further"
         style="@style/temperature"
         android:layout_width="wrap_content"
