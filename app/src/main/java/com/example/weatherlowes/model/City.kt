@@ -2,7 +2,7 @@ package com.example.weatherlowes.model
 
 import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter =true)
+@JsonClass(generateAdapter = true)
 data class City(
     val coord: Coord,
     val country: String,

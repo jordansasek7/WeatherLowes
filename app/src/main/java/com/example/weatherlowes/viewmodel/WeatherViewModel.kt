@@ -1,23 +1,15 @@
 package com.example.weatherlowes.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.weatherlowes.repo.WeatherRepo
-import com.example.weatherlowes.model.WeatherData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WeatherViewModel : ViewModel() {
-    private val _weather = MutableLiveData<WeatherData?>()
-    val weather: LiveData<WeatherData?> get() = _weather
+@HiltViewModel
+class WeatherViewModel @Inject constructor(private val weatherRepo: WeatherRepo) : ViewModel() {
 
-    var city: String = ""
-        set(value) {
-            viewModelScope.launch(Dispatchers.IO) {
-                _weather.postValue(WeatherRepo.getNameWeather(value))
-            }
-            field = value
-        }
+    fun getWeatherData(cityName : String) = weatherRepo.getNameWeather(cityName).asLiveData()
+
 }

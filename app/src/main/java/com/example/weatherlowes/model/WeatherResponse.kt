@@ -5,8 +5,8 @@ import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@JsonClass(generateAdapter =true)
-data class AllData(
+@JsonClass(generateAdapter = true)
+data class WeatherResponse(
     val clouds: Clouds,
     val dt: Int,
     val dt_txt: String,
@@ -18,4 +18,4 @@ data class AllData(
     val visibility: Int,
     val weather: List<Weather>,
     val wind: Wind
-)  : Parcelable {}
+) : Parcelable

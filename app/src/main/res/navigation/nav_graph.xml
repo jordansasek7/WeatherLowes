@@ -29,7 +29,7 @@
         android:label="DetailsFragment">
         <argument
             android:name="details"
-            app:argType="com.example.weatherlowes.model.AllData" />
+            app:argType="com.example.weatherlowes.model.WeatherResponse" />
     </fragment>
 
 </navigation>

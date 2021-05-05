@@ -8,4 +8,4 @@ import kotlinx.android.parcel.Parcelize
 @JsonClass(generateAdapter =true)
 data class Rain(
     val `3h`: Double
-) : Parcelable {}
+) : Parcelable

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="weather_image_item_size">35dp</dimen>
+    <dimen name="weather_item_temp_margin_vertical">15dp</dimen>
+    <dimen name="weather_item_temp_margin_start">15dp</dimen>
+</resources>

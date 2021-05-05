@@ -8,4 +8,4 @@ import kotlinx.android.parcel.Parcelize
 @JsonClass(generateAdapter =true)
 data class Sys(
     val pod: String
-)  : Parcelable {}
+)  : Parcelable
