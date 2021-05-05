@@ -20,9 +20,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideClient() = HttpLoggingInterceptor()
-        .apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+        .setLevel(HttpLoggingInterceptor.Level.BODY)
         .let {
             OkHttpClient.Builder().addInterceptor(it).build()
         }

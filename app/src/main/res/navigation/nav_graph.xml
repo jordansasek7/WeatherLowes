@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/temperature"
-        android:name="com.example.weatherlowes.view.Temperature"
+        android:name="com.example.weatherlowes.view.TemperatureFragment"
         android:label="Temperature">
         <action
             android:id="@+id/action_temperature_to_detailsFragment2"

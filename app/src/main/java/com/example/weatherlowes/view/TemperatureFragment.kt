@@ -20,11 +20,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class Temperature : Fragment(R.layout.fragment_temperature) {
+class TemperatureFragment : Fragment(R.layout.fragment_temperature) {
 
     private lateinit var binding: FragmentTemperatureBinding
     private val viewModel by activityViewModels<WeatherViewModel>()
-    private val args: TemperatureArgs by navArgs()
+    private val args: TemperatureFragmentArgs by navArgs()
 
     private val tempAdapter: TemperatureAdapter by lazy {
         TemperatureAdapter(this::weatherOnClick)
@@ -60,7 +60,7 @@ class Temperature : Fragment(R.layout.fragment_temperature) {
     }
 
     private fun weatherOnClick(weatherResponse: WeatherResponse) {
-        val action = TemperatureDirections.actionTemperatureToDetailsFragment2(weatherResponse, args.toDetails)
+        val action = TemperatureFragmentDirections.actionTemperatureToDetailsFragment2(weatherResponse, args.toDetails)
         findNavController().navigate(action)
     }
 }
