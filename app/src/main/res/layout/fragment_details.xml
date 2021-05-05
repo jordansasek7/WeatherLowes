@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_shadow_start_color"
     tools:context=".view.MainActivity">
 
 
@@ -68,9 +69,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_act_temp"
+        style="@style/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/temperature"
         android:text="@string/_69"
         android:textSize="68sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,9 +90,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_feels_like_temp_numb"
+        style="@style/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/temperature"
         android:text="@string/_69"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/tv_feels_like"
@@ -99,24 +100,32 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_details"
+        style="@style/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/temperature"
-        android:textColor="@color/black_800"
         android:text="Clouds"
+        android:textColor="@color/black_800"
         android:textSize="38sp"
         app:layout_constraintStart_toStartOf="@id/guideline7"
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_details_further"
+        style="@style/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/temperature"
         android:text="Scattered Clouds"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="@id/tv_details"
         app:layout_constraintTop_toBottomOf="@id/guideline4" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_weather_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="50dp"
+        app:layout_constraintStart_toStartOf="@id/parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_details"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

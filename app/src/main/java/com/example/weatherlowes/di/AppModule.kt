@@ -1,6 +1,6 @@
 package com.example.weatherlowes.di
 
-import com.example.weatherlowes.repo.WeatherService
+import com.example.weatherlowes.remote.WeatherService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +26,6 @@ object AppModule {
         .let {
             OkHttpClient.Builder().addInterceptor(it).build()
         }
-
 
     @Singleton
     @Provides

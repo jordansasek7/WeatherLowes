@@ -30,7 +30,6 @@ class Temperature : Fragment(R.layout.fragment_temperature) {
         TemperatureAdapter(this::weatherOnClick)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cityName = args.toDetails
@@ -53,7 +52,6 @@ class Temperature : Fragment(R.layout.fragment_temperature) {
                 addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
             }
         }
-
 
         viewModel.getWeatherData(cityName).observe(viewLifecycleOwner) { weatherData ->
             if (weatherData is Resource.Success) tempAdapter.updateWeatherList(weatherData.data.list) else if (weatherData is Resource.Error)

@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.weatherlowes.R
 import com.example.weatherlowes.databinding.FragmentDetailsBinding
+import com.example.weatherlowes.loadImage
 
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
@@ -16,11 +17,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         FragmentDetailsBinding.bind(view).apply {
+            val iconPath = args.details.weather[0].icon + ".png"
             tvActTemp.text = args.details.main.temp.toInt().toString()
             tvFeelsLikeTempNumb.text = args.details.main.feelsLike.toInt().toString()
             tvDetailsFurther.text = args.details.weather[0].description
             tvDetails.text = args.details.weather[0].main
-
+            ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
             toolbarDetails.setNavigationOnClickListener { findNavController().navigateUp() }
         }
     }
