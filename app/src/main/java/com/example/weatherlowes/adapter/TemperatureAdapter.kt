@@ -47,16 +47,13 @@ class TemperatureAdapter(
             }
             binding.tvTime.text = simpleDateFormat.format(Date(weatherResponse.dt * 1000))
         }
-
-
     }
 
+    fun updateWeatherList(weatherList: List<WeatherResponse>) {
+        this.weatherList = weatherList
+        this.notifyDataSetChanged()
 
-fun updateWeatherList(weatherList: List<WeatherResponse>) {
-    this.weatherList = weatherList
-    this.notifyDataSetChanged()
-
-}
+    }
 }
 
 
