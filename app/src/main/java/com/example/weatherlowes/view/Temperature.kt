@@ -60,7 +60,7 @@ class Temperature : Fragment(R.layout.fragment_temperature) {
     }
 
     private fun weatherOnClick(weatherResponse: WeatherResponse) {
-        val action = TemperatureDirections.actionTemperatureToDetailsFragment2(weatherResponse)
+        val action = TemperatureDirections.actionTemperatureToDetailsFragment2(weatherResponse, args.toDetails)
         findNavController().navigate(action)
     }
 }

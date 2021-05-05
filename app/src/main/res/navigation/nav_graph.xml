@@ -30,6 +30,9 @@
         <argument
             android:name="details"
             app:argType="com.example.weatherlowes.model.WeatherResponse" />
+        <argument
+            android:name="cityName"
+            app:argType="string" />
     </fragment>
 
 </navigation>
