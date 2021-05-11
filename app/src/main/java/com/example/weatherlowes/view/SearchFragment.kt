@@ -14,7 +14,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         FragmentSearchBinding.bind(view).apply {
-            etCityName.doAfterTextChanged { btnLookUp.isEnabled = it.isNullOrBlank() == false }
+            etCityName.doAfterTextChanged { btnLookUp.isEnabled = it.isNullOrBlank() == false}
             btnLookUp.setOnClickListener {
                 etCityName.text?.toString()?.let {
                     if (it.isNotBlank()) findNavController().navigate(

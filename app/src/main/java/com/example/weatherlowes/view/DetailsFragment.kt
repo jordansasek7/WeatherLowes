@@ -21,11 +21,12 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         FragmentDetailsBinding.bind(view).apply {
             val cityName = args.cityName
             toolbarDetails.title = cityName
-            val iconPath = args.details.weather[0].icon + ".png"
+
             tvActTemp.text = args.details.main.temp.toInt().toString() + "º"
             tvFeelsLikeTempNumb.text = args.details.main.feelsLike.toInt().toString() + "º"
             tvDetailsFurther.text = args.details.weather[0].description
             tvDetails.text = args.details.weather[0].main
+            val iconPath = args.details.weather[0].icon + ".png"
             ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
 
             val simpleDateFormat = SimpleDateFormat("M/d/yyyy h:mma", Locale.getDefault()).apply {

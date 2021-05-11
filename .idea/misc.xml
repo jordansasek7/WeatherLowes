@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.184375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_temperature.xml" value="0.1703125" />

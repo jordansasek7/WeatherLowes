@@ -2,6 +2,7 @@ package com.example.weatherlowes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherlowes.databinding.WeatherItemBinding
 import com.example.weatherlowes.loadImage
@@ -14,6 +15,22 @@ class TemperatureAdapter(
     private val weatherOnClick: (WeatherResponse) -> Unit
 ) : RecyclerView.Adapter<TemperatureAdapter.TemperatureViewHolder>() {
 
+    class TemperatureViewHolder(
+        private val binding: WeatherItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun setTemperatureView(weatherResponse: WeatherResponse) = with(binding) {
+            val iconPath = weatherResponse.weather[0].icon + ".png"
+            tvTemp.text = "${weatherResponse.main.temp.toInt()}º"
+            tvTypeWeather.text = weatherResponse.weather.firstOrNull()?.main ?: ""
+            ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
+            val simpleDateFormat = SimpleDateFormat("M/d ha", Locale.getDefault()).apply {
+                timeZone = TimeZone.getTimeZone("UTC")
+            }
+            tvTime.text = simpleDateFormat.format(Date(weatherResponse.dt * 1000))
+        }
+    }
+
     private var weatherList = listOf<WeatherResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemperatureViewHolder {
@@ -24,30 +41,12 @@ class TemperatureAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: TemperatureViewHolder, position: Int) {
-        holder.setTemperature(weatherList[position])
+    override fun onBindViewHolder(holder: TemperatureViewHolder, position: Int) = with(holder) {
+        setTemperatureView(weatherList[position])
     }
 
     override fun getItemCount(): Int {
         return weatherList.size
-    }
-
-    class TemperatureViewHolder(
-        private val binding: WeatherItemBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        fun setTemperature(weatherResponse: WeatherResponse) {
-            val iconPath = weatherResponse.weather[0].icon + ".png"
-            binding.tvTemp.text = "${weatherResponse.main.temp.toInt()}º"
-            binding.tvTypeWeather.text = weatherResponse.weather.firstOrNull()?.main ?: ""
-            binding.ivWeatherImage.loadImage("https://openweathermap.org/img/w/$iconPath")
-
-
-            val simpleDateFormat = SimpleDateFormat("M/d ha", Locale.getDefault()).apply {
-                timeZone = TimeZone.getTimeZone("UTC")
-            }
-            binding.tvTime.text = simpleDateFormat.format(Date(weatherResponse.dt * 1000))
-        }
     }
 
     fun updateWeatherList(weatherList: List<WeatherResponse>) {
